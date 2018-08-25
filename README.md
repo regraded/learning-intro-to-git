@@ -73,12 +73,12 @@ To push to github, you need to set your local repo to have an origin repo:
 ## Creating SSH pair so you arent prompted for username/password
 Best is to follow this article: https://help.github.com/articles/connecting-to-github-with-ssh/
 
-1. Generate new SSH key and add to the ssh-agent
-    1. `ssh-keygen -t rsa -b 4096 -C "SSH Key label"`
-    2. Save in default location
-    3. Add passphrase
-    4. Start the ssh-agent `eval "$(ssh-agent -s)"`
-    5. Add your new ssh key to the agent `ssh-add ~/.ssh/id_rsa`
-    6. Copy the public key (view the key using `cat ~/.ssh/id_rsa.pub`)
-    7. Add it to the github keys page
-    8. Test conneciton with `ssh -T git@github.com`
+**Generate new SSH key and add to the ssh-agent**
+1. `ssh-keygen -t rsa -b 4096 -C "SSH Key label"`
+2. Save in default location
+3. Add passphrase
+4. Start the ssh-agent `eval "$(ssh-agent -s)"`
+5. Add your new ssh key to the agent `ssh-add ~/.ssh/id_rsa`
+6. Copy the public key (view the key using `cat ~/.ssh/id_rsa.pub`)
+7. Add it to the github keys page
+8. Test conneciton with `ssh -T git@github.com`
