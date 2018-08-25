@@ -82,3 +82,4 @@ Best is to follow this article: https://help.github.com/articles/connecting-to-g
 6. Copy the public key (view the key using `cat ~/.ssh/id_rsa.pub`)
 7. Add it to the github keys page
 8. Test conneciton with `ssh -T git@github.com`
+
