@@ -1,6 +1,6 @@
-#Intro to working with Git
+# Intro to working with Git
 
-##Git Basics
+## Git Basics
 
 There are three basic stages/principals of git. 
 1. **Working Directory**: This is where all our unsaved fies and dirs live
@@ -12,12 +12,12 @@ There are three basic stages/principals of git.
 `git status`               shows status of files in working vs staging area. Red files = not in staging. Green = in staging. 
 `git add <file>`           adds files to staging area. 
 
-##Creating a repo
+## Creating a repo
 1. Create a new project folder `mkdir <folder>`
 2. Change into directory with `cd <folder>`
 3. Create a new repo with `git init`
 
-##Staging files 
+## Staging files 
 - **Add** files from working `git add <file>`
 - **Remove** files from staging with `git reset HEAD <file>`
 
@@ -25,7 +25,7 @@ There are three basic stages/principals of git.
 - You can use wildcards to add certain file types eg `git add *.html`
 - You can add all files using `git add -A`
 
-##Comitting files
+## Comitting files
 Commit staged files to the repo by using `git commit -m "Message"`. You can remove the -m flag, which will then open a editor, where you can enter a more detailed message. However, if you message is simple, then using the `-m` flag allows you to add a short message.
 
 The general rule for phrasing a commit message is `<Present tense word> <Short description> 
