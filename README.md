@@ -1,69 +1,84 @@
-# Working Directory
-- All our unsaved code / fies and dirs.
+#Intro to working with Git
 
-# Staging Area:-
-- Files and dirs what we choose to add to staging area.
-- Move files into this area, to prep before comitting them to a repository.
+##Git Basics
 
-# Repository:
-- Where all our snapshots are stored (files we have comitted into the repo)
-- 
+There are three basic stages/principals of git. 
+1. **Working Directory**: This is where all our unsaved fies and dirs live
+2. **Staging Area**: Where files/dirs go, when we are getting ready to commit them to the repo. 
+3. **Repository**: Where all our snapshots are stored (files we have comitted into the repo)
 
-# Commands:
-git init <repo-name> //     create new repo
-git status //               shows status of files in the working dir. Red files = not in the repo / not tracked
-git add <file> //           adds files to staging area. 
+**Basic starting commands**
+`git init <repo-name>`     create new repo.
+`git status`               shows status of files in working vs staging area. Red files = not in staging. Green = in staging. 
+`git add <file>`           adds files to staging area. 
 
+##Creating a repo
+1. Create a new project folder `mkdir <folder>`
+2. Change into directory with `cd <folder>`
+3. Create a new repo with `git init`
 
-Step 1. Create repo. git init
-Step 2. Stage files. git add
-Step 3. Commit staging area into repo. git commit
+##Staging files 
+- **Add** files from working `git add <file>`
+- **Remove** files from staging with `git reset HEAD <file>`
 
-How to commit: 
+### Adding multiple files at onces
+- You can use wildcards to add certain file types eg `git add *.html`
+- You can add all files using `git add -A`
 
-git commit -m "Message"
+##Comitting files
+Commit staged files to the repo by using `git commit -m "Message"`. You can remove the -m flag, which will then open a editor, where you can enter a more detailed message. However, if you message is simple, then using the `-m` flag allows you to add a short message.
 
-Present tense word, followed by short description. Eg. Add README.md
+The general rule for phrasing a commit message is `<Present tense word> <Short description> 
+For example
+> Add README.md
+> Update README.md
+> Fix markdown in README.md
+> Add all HTML files
 
-Show the history: git log
+## View commit history
+You can show the repo commit log by entering `git log`. 
 
-# Adding multiple files of a certain type. 
-1. Use wildcard, git add *.html
+## Branches
+Branches are like copies. Dupicating the source branch (usually master), so that you can work on a copy of the source, changing files, comitting etc, without having to commit directly into you priary (master) branch. 
+This is perfect for creating new features or testing new code. Once you are happy with your new feature, you can choose to merge the branch back into the master (or visa versa)
 
-# Add all files including hidden files
-git add -A 
--A = All files
+### List Branches
+List all repo braches with `git branch`. 
+`*` indicates the the current branch
 
-# Remove files from staging area
-git reset HEAD <file>
+### Create (Checkout) a new branch
+To create a new branch, we checkout an entire branch using `git checkout -b <new branch name>`
 
+### Changing between branches
+Change between branches using `git checkout <branch-name>`
 
-# Branches
-Add a branch to create a new stream where you can create new code or test new features without comitting into your main codebase / master branch. 
-If you decide you are happy with your branch, you can merge it back with your existing master branch.
+### Merging a branch
+So, you're ready to merge your new feature back into the master branch. When you merge two branches together, you are merging from the destination branch. 
+As in, if you want to merge your new features branch back with your master branch, you need to be in the master branch, and merge "IN" the feature branch. 
 
-- List Branches
-    - git branch
-    - * shows current branch
+1. Switch to the master branch with `git checkout master`
+2. `git merge <branch to merge into current branch>`
 
-- Checkout a new branch
-    - git checkout -b <new branch name>
+### Removing a branch
+Typically best practice is to keep branches around. They dont take up much space so there is no need to remove unless absolutely necessary. 
 
-- changing between branches
-    - git checkout <branch-name>
+If you need to remove a branch, you do `git branch -d <branc-name>` (-d for destroy)
 
-- Merging a branch
-    - git merge <branch to merge into CURRENT branch> 
-    - eg. you are in feature1, you want to merge master branch into feature1 branch s4YWw0EnQhUBX you git merge master. 
-    - if you wanted to merge feature 1 into master, you need to be in master branch, and then git merge feature1
-    - so you are always merging from the destination branch
+## Pushing to github
+To push to github, you need to set your local repo to have an origin repo:
+1. `git remote add origin <URL>`
+2. verify with `git remote -v`
+3. `git push --set-upstream origin master`
 
-- Removing a branch
-    - Typically you keep branches around. No need to remove unless absolutely necessary. 
-    - If you need to remove a branch, you do git branch -d (d for destroy) <branch-name>
-- 
+## Creating SSH pair so you arent prompted for username/password
+Best is to follow this article: https://help.github.com/articles/connecting-to-github-with-ssh/
 
-# Pushing to git
-1. git remote add origin <URL>
-2. verify with git remote -v
-3. got push -u origin master
+1. Generate new SSH key and add to the ssh-agent
+    1. `ssh-keygen -t rsa -b 4096 -C "SSH Key label"`
+    2. Save in default location
+    3. Add passphrase
+    4. Start the ssh-agent `eval "$(ssh-agent -s)"`
+    5. Add your new ssh key to the agent `ssh-add ~/.ssh/id_rsa`
+    6. Copy the public key (view the key using `cat ~/.ssh/id_rsa.pub`)
+    7. Add it to the github keys page
+    8. Test conneciton with `ssh -T git@github.com`
