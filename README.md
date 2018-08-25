@@ -54,7 +54,7 @@ If you decide you are happy with your branch, you can merge it back with your ex
 
 - Merging a branch
     - git merge <branch to merge into CURRENT branch> 
-    - eg. you are in feature1, you want to merge master branch into feature1 branch so you git merge master. 
+    - eg. you are in feature1, you want to merge master branch into feature1 branch s4YWw0EnQhUBX you git merge master. 
     - if you wanted to merge feature 1 into master, you need to be in master branch, and then git merge feature1
     - so you are always merging from the destination branch
 
@@ -63,3 +63,7 @@ If you decide you are happy with your branch, you can merge it back with your ex
     - If you need to remove a branch, you do git branch -d (d for destroy) <branch-name>
 - 
 
+# Pushing to git
+1. git remote add origin <URL>
+2. verify with git remote -v
+3. got push -u origin master
